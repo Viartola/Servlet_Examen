@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Borrar Idioma</title>
 </head>
 <body>
 <center><h1>AL BORRAR UN IDIOMA SERAN ELIMINADOS TODOS LOS PAISES QUE TENGAN EL MISMO IDIOMA</h1>

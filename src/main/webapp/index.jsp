@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Datos</title>
+<title>Insertar Pais</title>
 </head>
 <body>
 <form method="post" action="Insertar">
@@ -27,9 +27,9 @@
 				<select name="Idioma" id="Idioma">
 					<%  
 						Service servicio = new Service();
-						List<Idiomas> listAllIdiomas = servicio.listarIdiomas(); 
-						for (int i=0;i<listAllIdiomas.size();i++){
-						   out.println("<option value ='"+listAllIdiomas.get(i).getIdiomas()+"'>"+listAllIdiomas.get(i).getIdiomas()+"</option>");
+						List<Idiomas> listAllLanguages= servicio.listarIdiomas(); 
+						for (Idiomas language: listAllLanguages){
+						   out.println("<option value ='"+language.getIdiomas()+"'>"+language.getIdiomas()+"</option>");
 						}
 					%>
 				</select>

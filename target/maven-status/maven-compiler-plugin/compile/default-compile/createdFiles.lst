@@ -1,8 +1,8 @@
-repository/Sql.class
-servlet/ServletInsertar.class
 servlet/ServletConfirmacion.class
-servlet/ServletBorrar.class
 model/Paises.class
 servlet/ServletListar.class
 model/Idiomas.class
 service/Service.class
+repository/Repository.class
+servlet/ServletInsertar.class
+servlet/ServletBorrar.class
