@@ -86,8 +86,8 @@ static final String PASS = "";
 				resultSet = prepareStatement.executeQuery();
 				while(resultSet.next()){
 					Paises userInDatabase = new Paises();
-					userInDatabase.setPais(resultSet.getString(1));
-					userInDatabase.setIdioma(resultSet.getString(2));
+					userInDatabase.setCountry(resultSet.getString(1));
+					userInDatabase.setLanguage(resultSet.getString(2));
 					
 					listPaises.add(userInDatabase);
 				}
@@ -122,7 +122,7 @@ static final String PASS = "";
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
 				Idiomas userInDatabase = new Idiomas();
-				userInDatabase.setIdiomas(resultSet.getString(1));
+				userInDatabase.setLanguage(resultSet.getString(1));
 				
 				listIdiomas.add(userInDatabase);
 			}
