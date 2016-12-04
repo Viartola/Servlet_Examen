@@ -68,9 +68,9 @@ static final String PASS = "";
 		} 
 	}
 
-	public  List<Paises> listarPaises(){
+	public  List<Country> listarPaises(){
 		Connection conn = null;
-		List<Paises> listPaises= new ArrayList<Paises>();
+		List<Country> listAllCountries= new ArrayList<Country>();
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		Statement stmt = null;
@@ -85,11 +85,11 @@ static final String PASS = "";
 				prepareStatement = conn.prepareStatement("SELECT * FROM Paises");
 				resultSet = prepareStatement.executeQuery();
 				while(resultSet.next()){
-					Paises userInDatabase = new Paises();
+					Country userInDatabase = new Country();
 					userInDatabase.setCountry(resultSet.getString(1));
 					userInDatabase.setLanguage(resultSet.getString(2));
 					
-					listPaises.add(userInDatabase);
+					listAllCountries.add(userInDatabase);
 				}
 	
         } catch (SQLException se) {
@@ -101,12 +101,12 @@ static final String PASS = "";
             closeCon(conn);
             closeRs(resultSet);
         } 
-	    return listPaises;
+	    return listAllCountries;
 	}
 	
-	public  List<Idiomas> listarIdiomas(){
+	public  List<Language> listarIdiomas(){
     	Connection conn = null;
-    	List<Idiomas> listIdiomas = new ArrayList<Idiomas>();
+    	List<Language> listAllLanguages = new ArrayList<Language>();
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		Statement stmt = null;
@@ -121,10 +121,10 @@ static final String PASS = "";
 			prepareStatement = conn.prepareStatement("SELECT * FROM Idiomas");
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
-				Idiomas userInDatabase = new Idiomas();
+				Language userInDatabase = new Language();
 				userInDatabase.setLanguage(resultSet.getString(1));
 				
-				listIdiomas.add(userInDatabase);
+				listAllLanguages.add(userInDatabase);
 			}
 
         } catch (SQLException se) {
@@ -136,7 +136,7 @@ static final String PASS = "";
             closeCon(conn);
             closeRs(resultSet);
         } 
-        return listIdiomas;
+        return listAllLanguages;
    }
 
 	private void closeRs(ResultSet resultSet) {

@@ -26,13 +26,13 @@ public class ServletInsertar extends HttpServlet {
 		String language = req.getParameter("language");
 		String nLanguage = req.getParameter("newLanguage");
 		
-		service.crearTablas();
+		service.createTables();
 		
 		if(nLanguage == ""){
-			service.insertarPais(language, country);
+			service.insertNewCountry(language, country);
 		}
 		else{
-			service.insertarNuevoIdioma(nLanguage, country);
+			service.insertNewLanguage(nLanguage, country);
 		}
 
 		redirect(resp);

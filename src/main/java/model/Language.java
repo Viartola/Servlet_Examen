@@ -1,6 +1,6 @@
 package model;
 
-public class Idiomas {
+public class Language {
 	private String language;
 
 	public String getLanguage() {

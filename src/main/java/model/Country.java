@@ -1,6 +1,6 @@
 package model;
 
-public class Paises {
+public class Country {
 	private String country;
 	private String language;
 	public String getCountry() {

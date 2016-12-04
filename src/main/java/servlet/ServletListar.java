@@ -14,7 +14,7 @@ import model.*;
 import service.*;
 
 public class ServletListar extends HttpServlet {
-	List<Paises> listAllCountries= new ArrayList<Paises>();
+	List<Country> listAllCountries= new ArrayList<Country>();
 	private Service service = new Service();
 	
 	@Override
@@ -25,7 +25,7 @@ public class ServletListar extends HttpServlet {
 	}
 
 	private void redirect(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Mostrar.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ShowCountries.jsp");
 		dispatcher.forward(req,resp);
 	}
 }

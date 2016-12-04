@@ -18,7 +18,7 @@ public class ServletBorrar extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String language = req.getParameter("language");
 		req.setAttribute("language",language);
-		service.BorrarIdioma(language);
+		service.deleteTable(language);
 		redirect(resp);
 	}
 

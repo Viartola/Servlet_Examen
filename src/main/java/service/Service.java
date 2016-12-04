@@ -8,29 +8,29 @@ import repository.*;
 public class Service {
 	private Repository repository = new Repository();
 	
-	public void insertarNuevoIdioma(String nLanguage, String country) {
+	public void insertNewLanguage(String nLanguage, String country) {
 		repository.insertarTablaIdiomas(nLanguage);
 		repository.insertarTablaPaises(country, nLanguage);
 	}
 	
-	public void insertarPais(String language, String country) {
+	public void insertNewCountry(String language, String country) {
 		repository.insertarTablaPaises(country, language);
 	}
 	
-	public void crearTablas() {
+	public void createTables() {
 		repository.crearTablaPaises();
 		repository.crearTablaIdiomas();
 	}
 	
-	public void BorrarIdioma(String language) {
+	public void deleteTable(String language) {
 		repository.BorrarTabla(language);
 	}
 
-	public List<Paises> listAllCountries() {
+	public List<Country> listAllCountries() {
 		return repository.listarPaises();
 	}
 	
-	public List<Idiomas> listAllLanguages() {
+	public List<Language> listAllLanguages() {
 		return repository.listarIdiomas();
 	}
 

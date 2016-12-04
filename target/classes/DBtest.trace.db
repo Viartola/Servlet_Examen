@@ -540,3 +540,35 @@ REPLACE INTO Idiomas (idioma) VALUES ('Castellano') [42102-192]
 org.h2.jdbc.JdbcSQLException: Tabla "PAISES" no encontrada
 Table "PAISES" not found; SQL statement:
 REPLACE INTO Paises (pais,idioma-países) VALUES ('Peru', 'Castellano') [42102-192]
+2016-12-04 22:49:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COUNTRY" no encontrada
+Table "COUNTRY" not found; SQL statement:
+SELECT * FROM Country [42102-192]
+2016-12-04 22:49:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "LANGUAGE" no encontrada
+Table "LANGUAGE" not found; SQL statement:
+SELECT * FROM Language [42102-192]
+2016-12-04 22:50:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "LANGUAGE" no encontrada
+Table "LANGUAGE" not found; SQL statement:
+SELECT * FROM Language [42102-192]

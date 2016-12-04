@@ -27,8 +27,8 @@
 				<select name="language" id="language">
 					<%  
 						Service service = new Service();
-						List<Idiomas> listAllLanguages = service.listAllLanguages(); 
-						for (Idiomas language: listAllLanguages){
+						List<Language> listAllLanguages = service.listAllLanguages(); 
+						for (Language language: listAllLanguages){
 						   out.println("<option value ='"+language.getLanguage()+"'>"+language.getLanguage()+"</option>");
 						}
 					%>
@@ -43,7 +43,7 @@
 			<td colspan="2" align="right"><input type="submit" value="Enviar"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="left"><input type="button" onclick="window.location.href='Mostrar.jsp'"  value="Mostrar Paises"></td>
+			<td colspan="2" align="left"><input type="button" onclick="window.location.href='ShowCountries.jsp'"  value="Mostrar Paises"></td>
 		</tr>
 	</table>
 </form>
