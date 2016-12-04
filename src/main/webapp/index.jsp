@@ -18,18 +18,18 @@
 		</tr>
 		<tr>
 			<td><p>Pais:</p></td>
-			<td><input type="text" id="pais" name="pais" size="30"></td>
+			<td><input type="text" id="country" name="country" size="30"></td>
 		</tr>
 		
 		<tr>
 			<td><p>Idioma:</p></td>
 			<td>
-				<select name="Idioma" id="Idioma">
+				<select name="language" id="language">
 					<%  
-						Service servicio = new Service();
-						List<Idiomas> listAllIdiomas = servicio.listarIdiomas(); 
-						for (int i=0;i<listAllIdiomas.size();i++){
-						   out.println("<option value ='"+listAllIdiomas.get(i).getIdiomas()+"'>"+listAllIdiomas.get(i).getIdiomas()+"</option>");
+						Service service = new Service();
+						List<Idiomas> listAllLanguages = service.listAllLanguages(); 
+						for (Idiomas language: listAllLanguages){
+						   out.println("<option value ='"+language.getLanguage()+"'>"+language.getLanguage()+"</option>");
 						}
 					%>
 				</select>
@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<td><p>Insertar nuevo Idioma:</p></td>
-			<td><input type="text" id="nuevoIdioma" name="nuevoIdioma" size="30"></td>
+			<td><input type="text" id="newLanguage" name="newLanguage" size="30"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right"><input type="submit" value="Enviar"></td>
