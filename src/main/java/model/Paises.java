@@ -1,20 +1,19 @@
 package model;
 
 public class Paises {
-	private String pais;
-	private String idioma;
-	
-	public String getPais() {
-		return pais;
+	private String country;
+	private String language;
+	public String getCountry() {
+		return country;
 	}
-	public void setPais(String pais) {
-		this.pais = pais;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public String getIdioma() {
-		return idioma;
+	public String getLanguage() {
+		return language;
 	}
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 	
 }

@@ -18,21 +18,21 @@ import service.*;
  * Servlet implementation class servlet
  */
 public class ServletInsertar extends HttpServlet {
-	private Service servicio = new Service();
+	private Service service = new Service();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pais = req.getParameter("pais");
-		String idioma = req.getParameter("Idioma");
-		String nIdioma = req.getParameter("nuevoIdioma");
+		String country = req.getParameter("country");
+		String language = req.getParameter("language");
+		String nLanguage = req.getParameter("newLanguage");
 		
-		servicio.crearTablas();
+		service.crearTablas();
 		
-		if(nIdioma == ""){
-			servicio.insertarPais(idioma, pais);
+		if(nLanguage == ""){
+			service.insertarPais(language, country);
 		}
 		else{
-			servicio.insertarNuevoIdioma(nIdioma, pais);
+			service.insertarNuevoIdioma(nLanguage, country);
 		}
 
 		redirect(resp);

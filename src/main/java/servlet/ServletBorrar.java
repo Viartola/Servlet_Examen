@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import service.*;
 
 public class ServletBorrar extends HttpServlet {
-	private Service servicio = new Service();
+	private Service service = new Service();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String idioma = req.getParameter("user");
-		req.setAttribute("idioma",idioma);
-		servicio.BorrarIdioma(idioma);
+		String language = req.getParameter("language");
+		service.BorrarIdioma(language);
 		redirect(resp);
 	}
 

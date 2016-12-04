@@ -23,7 +23,7 @@ static final String DB_URL = "jdbc:h2:" + ruta + "DBtest";
 static final String USER = "sa";
 static final String PASS = "";
 
-	public void BorrarTabla(String idioma){
+	public void BorrarTabla(String language){
 		Connection conn = null;
 	    Statement stmt = null;
 	
@@ -34,8 +34,8 @@ static final String PASS = "";
 			
 			stmt = conn.createStatement();
 			
-			String sql = "DELETE FROM Paises WHERE idiomaPaises = '" + idioma + "'";
-			String sql2 = "DELETE FROM Idiomas WHERE idioma = '" + idioma + "'";
+			String sql = "DELETE FROM Paises WHERE idiomaPaises = '" + language + "'";
+			String sql2 = "DELETE FROM Idiomas WHERE idioma = '" + language + "'";
 	
 	        stmt.executeUpdate(sql);
 	        stmt.executeUpdate(sql2);
@@ -151,7 +151,7 @@ static final String PASS = "";
 		}
 	}
     
-   public void insertarTablaPaises(String pais, String Idioma){
+   public void insertarTablaPaises(String country, String language){
     	Connection conn = null;
         Statement stmt = null;
 
@@ -162,7 +162,7 @@ static final String PASS = "";
 		  
 		    stmt = conn.createStatement();
 		
-		    String sql = "REPLACE INTO Paises (pais,idiomaPaises) VALUES ('" + pais + "', '" + Idioma + "')";
+		    String sql = "REPLACE INTO Paises (pais,idiomaPaises) VALUES ('" + country + "', '" + language + "')";
                    
             stmt.executeUpdate(sql);
         } catch (SQLException se) {            
@@ -175,7 +175,7 @@ static final String PASS = "";
         } 
     }
    
-   public  void insertarTablaIdiomas(String idioma){
+   public  void insertarTablaIdiomas(String language){
 	   Connection conn = null;
        Statement stmt = null;
 
@@ -186,7 +186,7 @@ static final String PASS = "";
 		 
 		   stmt = conn.createStatement();
 		
-		   String sql = "REPLACE INTO Idiomas (idioma) VALUES ('" + idioma + "')";
+		   String sql = "REPLACE INTO Idiomas (idioma) VALUES ('" + language + "')";
                   
            stmt.executeUpdate(sql);
        } catch (SQLException se) {            

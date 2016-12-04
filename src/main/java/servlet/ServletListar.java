@@ -14,13 +14,13 @@ import model.*;
 import service.*;
 
 public class ServletListar extends HttpServlet {
-	List<Paises> listAllPaises = new ArrayList<Paises>();
-	private Service servicio = new Service();
+	List<Paises> listAllCountries= new ArrayList<Paises>();
+	private Service service = new Service();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		listAllPaises = servicio.listarPaises();
-		req.setAttribute("listAllPaises", listAllPaises);
+		listAllCountries = service.listAllCountries();
+		req.setAttribute("listAllCountries", listAllCountries);
 		redirect(req,resp);
 	}
 

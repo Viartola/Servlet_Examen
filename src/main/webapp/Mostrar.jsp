@@ -36,11 +36,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="user1" items="${listAllPaises}">
+			<c:forEach var="language" items="${listAllCountries}">
 				<tr>
-					<td><c:out value="${user1.pais}"/> </td>
+					<td><c:out value="${language.country}"/> </td>
 					<td></td>
-					<td><c:out value="${user1.idioma}"/> </td>
+					<td><c:out value="${language.language}"/> </td>
 					<td></td>
 					<td><a name="user" href="Confirmacion?idioma=${user1.idioma}">Borrar Idioma</a></td>
 		    	</tr>

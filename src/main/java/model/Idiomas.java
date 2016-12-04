@@ -1,14 +1,13 @@
 package model;
 
 public class Idiomas {
-	private String idiomas;
+	private String language;
 
-	public String getIdiomas() {
-		return idiomas;
+	public String getLanguage() {
+		return language;
 	}
 
-	public void setIdiomas(String idiomas) {
-		this.idiomas = idiomas;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
-	
 }
