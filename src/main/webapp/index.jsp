@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insertar Pais</title>
+<title>Insertar Paises</title>
 </head>
 <body>
-<form method="post" action="Insertar">
+<form method="post" action="Insert">
 	<table width="40%" align="center">
 		<tr>
 			<td colspan="2" align="center"><h2>Escriba su pais</h2><hr></td>

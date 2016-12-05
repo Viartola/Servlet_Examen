@@ -68,7 +68,7 @@ static final String PASS = "";
 		} 
 	}
 
-	public  List<Country> listarPaises(){
+	public  List<Country> listAllCountries(){
 		Connection conn = null;
 		List<Country> listAllCountries= new ArrayList<Country>();
 		ResultSet resultSet = null;
@@ -82,7 +82,7 @@ static final String PASS = "";
 			   
 			    stmt = conn.createStatement();
 				
-				prepareStatement = conn.prepareStatement("SELECT * FROM Paises");
+				prepareStatement = conn.prepareStatement("SELECT * FROM Countries");
 				resultSet = prepareStatement.executeQuery();
 				while(resultSet.next()){
 					Country userInDatabase = new Country();
@@ -104,7 +104,7 @@ static final String PASS = "";
 	    return listAllCountries;
 	}
 	
-	public  List<Language> listarIdiomas(){
+	public  List<Language> listAllLanguages(){
     	Connection conn = null;
     	List<Language> listAllLanguages = new ArrayList<Language>();
 		ResultSet resultSet = null;
@@ -118,7 +118,7 @@ static final String PASS = "";
 		   
 		    stmt = conn.createStatement();
 			
-			prepareStatement = conn.prepareStatement("SELECT * FROM Idiomas");
+			prepareStatement = conn.prepareStatement("SELECT * FROM Languages");
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
 				Language userInDatabase = new Language();
@@ -137,7 +137,7 @@ static final String PASS = "";
             closeRs(resultSet);
         } 
         return listAllLanguages;
-   }
+	}
 
 	private void closeRs(ResultSet resultSet) {
 		if(
@@ -151,44 +151,44 @@ static final String PASS = "";
 		}
 	}
     
-   public void insertarTablaPaises(String country, String language){
-    	Connection conn = null;
-        Statement stmt = null;
-
-        try {
-            Class.forName("org.h2.Driver");
-
-		    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		  
-		    stmt = conn.createStatement();
-		
-		    String sql = "REPLACE INTO Paises (pais,idiomaPaises) VALUES ('" + country + "', '" + language + "')";
-                   
-            stmt.executeUpdate(sql);
-        } catch (SQLException se) {            
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeStm(conn, stmt);
-            closeCon(conn);
-        } 
-    }
+	public void insertNewCountry(String country, String language){
+	    	Connection conn = null;
+	        Statement stmt = null;
+	
+	        try {
+	            Class.forName("org.h2.Driver");
+	
+			    conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			  
+			    stmt = conn.createStatement();
+			
+			    String sql = "REPLACE INTO Countries (country,language) VALUES ('" + country + "', '" + language + "')";
+	               
+	        stmt.executeUpdate(sql);
+	    } catch (SQLException se) {            
+	        se.printStackTrace();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeStm(conn, stmt);
+	        closeCon(conn);
+	    } 
+	}
    
-   public  void insertarTablaIdiomas(String language){
+	public  void insertNewLanguage(String language){
 	   Connection conn = null;
-       Statement stmt = null;
-
-       try {
-           Class.forName("org.h2.Driver");
-
+	   Statement stmt = null;
+	
+	   try {
+	       Class.forName("org.h2.Driver");
+	
 		   conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		 
 		   stmt = conn.createStatement();
 		
-		   String sql = "REPLACE INTO Idiomas (idioma) VALUES ('" + language + "')";
-                  
-           stmt.executeUpdate(sql);
+		   String sql = "REPLACE INTO Languages (language) VALUES ('" + language + "')";
+	                  
+	           stmt.executeUpdate(sql);
        } catch (SQLException se) {            
            se.printStackTrace();
        } catch (Exception e) {
@@ -197,9 +197,9 @@ static final String PASS = "";
            closeStm(conn, stmt);
            closeCon(conn);
        } 
-   }
+	}
    
-   public void crearTablaIdiomas(){
+	public void createLanguagesTable(){
 	   Connection conn = null;
        Statement stmt = null;
 
@@ -210,7 +210,7 @@ static final String PASS = "";
 		  
 		   stmt = conn.createStatement();
 		
-		   String sql = "CREATE TABLE IF NOT EXISTS Idiomas (idioma VARCHAR(255), PRIMARY KEY (idioma))";
+		   String sql = "CREATE TABLE IF NOT EXISTS Languages (language VARCHAR(255), PRIMARY KEY (language))";
 
            stmt.executeUpdate(sql);
        } catch (SQLException se) {
@@ -224,7 +224,7 @@ static final String PASS = "";
 	}
 
    
-   public void crearTablaPaises(){
+	public void createCountriesTable(){
 	   Connection conn = null;
 	   Statement stmt = null;
 	
@@ -235,7 +235,7 @@ static final String PASS = "";
 		  
 		   stmt = conn.createStatement();
 		
-		   String sql = "CREATE TABLE IF NOT EXISTS Paises(pais VARCHAR(255), idiomaPaises VARCHAR(255), PRIMARY KEY (pais))";
+		   String sql = "CREATE TABLE IF NOT EXISTS Countries(country VARCHAR(255), language VARCHAR(255), PRIMARY KEY (country))";
 	
 	       stmt.executeUpdate(sql);
 	   } catch (SQLException se) {
@@ -246,5 +246,5 @@ static final String PASS = "";
 		   closeStm(conn, stmt);
 	       closeCon(conn);
 	   } 
-   }  
+	}  
 }

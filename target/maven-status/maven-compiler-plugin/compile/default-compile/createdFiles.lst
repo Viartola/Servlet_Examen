@@ -1,8 +1,8 @@
-servlet/ServletConfirmacion.class
-servlet/ServletListar.class
+servlet/DeleteServlet.class
+servlet/ConfirmationServlet.class
 service/Service.class
 repository/Repository.class
 model/Language.class
-servlet/ServletInsertar.class
-servlet/ServletBorrar.class
+servlet/ListServlet.class
+servlet/InfoDataServlet.class
 model/Country.class

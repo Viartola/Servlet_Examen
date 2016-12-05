@@ -8,7 +8,7 @@
 </head>
 <body>
 <center><h1>AL BORRAR UN IDIOMA SERAN ELIMINADOS TODOS LOS PAISES QUE TENGAN EL MISMO IDIOMA</h1>
-<form method="post" action="Borrar">
+<form method="post" action="Delete">
 		<input type="hidden" value="${language}" name="language">
 		<br>
 		<input type="submit"  value="SI, estoy seguro">

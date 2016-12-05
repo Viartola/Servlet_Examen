@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.*;
 import service.*;
 
-public class ServletListar extends HttpServlet {
+public class ListServlet extends HttpServlet {
 	List<Country> listAllCountries= new ArrayList<Country>();
 	private Service service = new Service();
 	

@@ -572,3 +572,10 @@ SELECT * FROM Language [42102-192]
 org.h2.jdbc.JdbcSQLException: Tabla "LANGUAGE" no encontrada
 Table "LANGUAGE" not found; SQL statement:
 SELECT * FROM Language [42102-192]
+<<<<<<< HEAD
+=======
+2016-12-05 11:31:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "LANGUAGES" no encontrada
+Table "LANGUAGES" not found; SQL statement:
+SELECT * FROM Languages [42102-192]
+>>>>>>> cambios_2
