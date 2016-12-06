@@ -23,7 +23,8 @@ static final String DB_URL = "jdbc:h2:" + ruta + "DBtest";
 static final String USER = "sa";
 static final String PASS = "";
 
-	public void BorrarTabla(String language){
+
+	public void deleteCountry(String language){
 		Connection conn = null;
 	    Statement stmt = null;
 	
@@ -34,11 +35,34 @@ static final String PASS = "";
 			
 			stmt = conn.createStatement();
 			
-			String sql = "DELETE FROM Paises WHERE idiomaPaises = '" + language + "'";
-			String sql2 = "DELETE FROM Idiomas WHERE idioma = '" + language + "'";
+			String sql = "DELETE FROM Countries WHERE language = '" + language + "'";
 	
 	        stmt.executeUpdate(sql);
-	        stmt.executeUpdate(sql2);
+	
+	    } catch (SQLException se) {
+	        se.printStackTrace();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeStm(conn, stmt);
+	        closeCon(conn);
+	    } 
+	} 
+
+	public void deleteLannguage(String language){
+		Connection conn = null;
+	    Statement stmt = null;
+	
+	    try {
+	        Class.forName("org.h2.Driver");
+	
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			
+			stmt = conn.createStatement();
+			
+			String sql = "DELETE FROM Languages WHERE language = '" + language + "'";
+	
+	        stmt.executeUpdate(sql);
 	
 	    } catch (SQLException se) {
 	        se.printStackTrace();
@@ -98,8 +122,8 @@ static final String PASS = "";
             e.printStackTrace();
         } finally {
             closeStm(conn, stmt);
-            closeCon(conn);
             closeRs(resultSet);
+            closeCon(conn);
         } 
 	    return listAllCountries;
 	}
@@ -133,8 +157,8 @@ static final String PASS = "";
             e.printStackTrace();
         } finally {
             closeStm(conn, stmt);
-            closeCon(conn);
             closeRs(resultSet);
+            closeCon(conn);
         } 
         return listAllLanguages;
 	}
