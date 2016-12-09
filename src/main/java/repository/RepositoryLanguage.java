@@ -74,7 +74,5 @@ public class RepositoryLanguage extends Close {
 			close(preparedStatement);
 		}
 		manager.close(conn);
-	}
-	
+	}	
 }
-

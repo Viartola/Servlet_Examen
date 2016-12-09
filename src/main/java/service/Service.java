@@ -6,36 +6,36 @@ import model.*;
 import repository.*;
 
 public class Service {
-	private RepositoryCountry repositoryCountry = new RepositoryCountry();
+	private RepositoryCountries repositoryCountries = new RepositoryCountries();
 	private RepositoryLanguage repositoryLanguage = new RepositoryLanguage();
 	
 	public void insertNewLanguage(String nLanguage, String country) {
 		repositoryLanguage.insertNewLanguage(nLanguage);
-		repositoryCountry.insertNewCountry(country, nLanguage);
+		repositoryCountries.insertNewCountry(country, nLanguage);
 	}
 	
 	public void insertNewCountry(String language, String country) {
-		repositoryCountry.insertNewCountry(country, language);
+		repositoryCountries.insertNewCountry(country, language);
 	}
 	
 	public void deleteTable(String language) {
-		repositoryCountry.deleteCountry(language);
+		repositoryCountries.deleteCountry(language);
 		repositoryLanguage.deleteLannguage(language);
 	}
 
 	public List<Country> listAllCountries() {
-		return repositoryCountry.listAllCountries();
+		return repositoryCountries.listAllCountries();
 	}
 	
 	public List<Language> listAllLanguages() {
 		return repositoryLanguage.listAllLanguages();
 	}
 
-	public RepositoryCountry getRepository() {
-		return repositoryCountry;
+	public RepositoryCountries getRepository() {
+		return repositoryCountries;
 	}
 
-	public void setRepository(RepositoryCountry repositoryCountry) {
-		this.repositoryCountry = repositoryCountry;
+	public void setRepository(RepositoryCountries repositoryCountries) {
+		this.repositoryCountries = repositoryCountries;
 	}	
 }

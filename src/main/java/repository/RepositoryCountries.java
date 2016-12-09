@@ -10,7 +10,7 @@ import java.util.List;
 import model.*;
 import connection.*;
 
-public class RepositoryCountry extends Close{
+public class RepositoryCountries extends Close{
 	
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/DBtest";
 	static ConnectionManager manager = new ConnectionH2();
@@ -75,6 +75,5 @@ public class RepositoryCountry extends Close{
 			close(preparedStatement);
 		}
 		manager.close(conn);
-	}
-   
+	} 
 }
