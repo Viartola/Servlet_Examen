@@ -31,11 +31,11 @@ public class InfoDataServlet extends HttpServlet {
 			fail = "Error inserte un pais";
 			req.setAttribute("fail",fail);
 		}else if(nLanguage == ""){
-			fail = "Se inserto con exite el nuevo pais";
+			fail = "Se inserto con exito el nuevo pais";
 			req.setAttribute("fail",fail);
 			service.insertNewCountry(language, country);
 		}else{
-			fail = "Se inserto con exite el nuevo pais";
+			fail = "Se inserto con exito el nuevo pais";
 			req.setAttribute("fail",fail);
 			service.insertNewLanguage(nLanguage, country);
 		}
