@@ -59,14 +59,13 @@ public class Repository {
 	
 	    try {
 	    	preparedStatement = conn.prepareStatement("SELECT * FROM Countries");
-			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()){
-				Country userInDatabase = new Country();
-				userInDatabase.setCountry(resultSet.getString(1));
-				userInDatabase.setLanguage(resultSet.getString(2));
-				
-				listAllCountries.add(userInDatabase);
-			}
+	    	resultSet = preparedStatement.executeQuery();
+	    	while(resultSet.next()){
+	    		Country userInDatabase = new Country();
+	    		userInDatabase.setCountry(resultSet.getString(1));
+	    		userInDatabase.setLanguage(resultSet.getString(2));
+	    		listAllCountries.add(userInDatabase);
+	    	}
 	    } catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -79,8 +78,8 @@ public class Repository {
 	}
 	
 	public  List<Language> listAllLanguages(){
-    	List<Language> listAllLanguages = new ArrayList<Language>();
-    	Connection conn = manager.open(jdbcUrl);
+		List<Language> listAllLanguages = new ArrayList<Language>();
+		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -93,7 +92,7 @@ public class Repository {
 				
 				listAllLanguages.add(userInDatabase);
 			}
-        } catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {
@@ -108,8 +107,8 @@ public class Repository {
 		PreparedStatement preparedStatement = null;
 		Connection conn = manager.open(jdbcUrl);
 
-        try {
-        	preparedStatement = conn.prepareStatement("REPLACE INTO Countries (country,language) VALUES (?,?)");
+		try {
+			preparedStatement = conn.prepareStatement("REPLACE INTO Countries (country,language) VALUES (?,?)");
 			preparedStatement.setString(1, country);
 			preparedStatement.setString(2, language);
 			preparedStatement.execute();
@@ -126,7 +125,7 @@ public class Repository {
 		PreparedStatement preparedStatement = null;
 		Connection conn = manager.open(jdbcUrl);
 
-        try {
+		try {
 			preparedStatement = conn.prepareStatement("REPLACE INTO Languages (language) VALUES (?)");
 			preparedStatement.setString(1, language);
 			preparedStatement.execute();
