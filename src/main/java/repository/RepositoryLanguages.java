@@ -10,7 +10,7 @@ import java.util.List;
 import model.*;
 import connection.*;
 
-public class RepositoryLanguage extends Close {
+public class RepositoryLanguages extends Close {
 	
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/DBtest";
 	static ConnectionManager manager = new ConnectionH2();
