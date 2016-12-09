@@ -25,20 +25,21 @@ public class InfoDataServlet extends HttpServlet {
 		String country = req.getParameter("country");
 		String language = req.getParameter("language");
 		String nLanguage = req.getParameter("newLanguage");
+		String fail = "";
 		
-		service.createTables();
-		
-		if(nLanguage == ""){
+		if (country == ""){
+			fail = "Error inserte un pais";
+			req.setAttribute("fail",fail);
+		}else if(nLanguage == ""){
+			fail = "Se inserto con exite el nuevo pais";
+			req.setAttribute("fail",fail);
 			service.insertNewCountry(language, country);
-		}
-		else{
+		}else{
+			fail = "Se inserto con exite el nuevo pais";
+			req.setAttribute("fail",fail);
 			service.insertNewLanguage(nLanguage, country);
 		}
 
-		redirect(resp);
-	}
-	
-	private void redirect(HttpServletResponse resp) throws IOException {
-		resp.sendRedirect("index.jsp");
+		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 }

@@ -17,11 +17,6 @@ public class Service {
 		repository.insertNewCountry(country, language);
 	}
 	
-	public void createTables() {
-		repository.createCountriesTable();
-		repository.createLanguagesTable();
-	}
-	
 	public void deleteTable(String language) {
 		repository.deleteCountry(language);
 		repository.deleteLannguage(language);

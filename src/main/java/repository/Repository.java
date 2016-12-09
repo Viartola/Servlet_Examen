@@ -1,274 +1,159 @@
 package repository;
 
-import java.io.File;
-import java.nio.file.Paths;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.*;
+import connection.*;
 
 public class Repository {
-static File archivo = Paths.get(".").toAbsolutePath().normalize().toFile();
-static String ruta = archivo.toString() + "/src/main/resources/";
-
-static final String JDBC_DRIVER = "org.h2.Driver"; 
-static final String DB_URL = "jdbc:h2:" + ruta + "DBtest";
-
-static final String USER = "sa";
-static final String PASS = "";
-
+	
+	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/DBtest";
+	static ConnectionManager manager = new ConnectionH2();
 
 	public void deleteCountry(String language){
-		Connection conn = null;
-	    Statement stmt = null;
+		PreparedStatement preparedStatement = null;
+		Connection conn = manager.open(jdbcUrl);
 	
-	    try {
-	        Class.forName("org.h2.Driver");
-	
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			
-			stmt = conn.createStatement();
-			
-			String sql = "DELETE FROM Countries WHERE language = '" + language + "'";
-	
-	        stmt.executeUpdate(sql);
-	
-	    } catch (SQLException se) {
-	        se.printStackTrace();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        closeStm(conn, stmt);
-	        closeCon(conn);
-	    } 
+		try {
+			preparedStatement = conn.prepareStatement("DELETE FROM Countries WHERE language = ?");
+			preparedStatement.setString(1, language);
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		
+		manager.close(conn);
 	} 
-
+	
 	public void deleteLannguage(String language){
-		Connection conn = null;
-	    Statement stmt = null;
+	    PreparedStatement preparedStatement = null;
+		Connection conn = manager.open(jdbcUrl);
 	
-	    try {
-	        Class.forName("org.h2.Driver");
-	
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			
-			stmt = conn.createStatement();
-			
-			String sql = "DELETE FROM Languages WHERE language = '" + language + "'";
-	
-	        stmt.executeUpdate(sql);
-	
-	    } catch (SQLException se) {
-	        se.printStackTrace();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        closeStm(conn, stmt);
-	        closeCon(conn);
-	    } 
+		try {
+			preparedStatement = conn.prepareStatement("DELETE FROM Languages WHERE language = ?");
+			preparedStatement.setString(1, language);
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		
+		manager.close(conn);
 	} 
-
-	private void closeCon(Connection conn) {
-		try {
-		    if (conn!= null)
-		        conn.close();
-		} catch (SQLException se) {
-		    se.printStackTrace();
-		} 
-	}
-
-	private void closeStm(Connection conn, Statement stmt) {
-		try {
-		    if (stmt!=null)
-		        conn.close();
-		} catch (SQLException se) {
-			se.printStackTrace();
-		} 
-	}
 
 	public  List<Country> listAllCountries(){
-		Connection conn = null;
 		List<Country> listAllCountries= new ArrayList<Country>();
+		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		Statement stmt = null;
+		PreparedStatement preparedStatement = null;
 	
 	    try {
-		        Class.forName("org.h2.Driver");
-		
-			    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			   
-			    stmt = conn.createStatement();
+	    	preparedStatement = conn.prepareStatement("SELECT * FROM Countries");
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				Country userInDatabase = new Country();
+				userInDatabase.setCountry(resultSet.getString(1));
+				userInDatabase.setLanguage(resultSet.getString(2));
 				
-				prepareStatement = conn.prepareStatement("SELECT * FROM Countries");
-				resultSet = prepareStatement.executeQuery();
-				while(resultSet.next()){
-					Country userInDatabase = new Country();
-					userInDatabase.setCountry(resultSet.getString(1));
-					userInDatabase.setLanguage(resultSet.getString(2));
-					
-					listAllCountries.add(userInDatabase);
-				}
-	
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeStm(conn, stmt);
-            closeRs(resultSet);
-            closeCon(conn);
-        } 
+				listAllCountries.add(userInDatabase);
+			}
+	    } catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(resultSet);
+			close(preparedStatement);
+		}
+	    manager.close(conn);
 	    return listAllCountries;
 	}
 	
 	public  List<Language> listAllLanguages(){
-    	Connection conn = null;
     	List<Language> listAllLanguages = new ArrayList<Language>();
+    	Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		Statement stmt = null;
+		PreparedStatement preparedStatement = null;
 
         try {
-            Class.forName("org.h2.Driver");
-
-		    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		   
-		    stmt = conn.createStatement();
-			
-			prepareStatement = conn.prepareStatement("SELECT * FROM Languages");
-			resultSet = prepareStatement.executeQuery();
+			preparedStatement = conn.prepareStatement("SELECT * FROM Languages");
+			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				Language userInDatabase = new Language();
 				userInDatabase.setLanguage(resultSet.getString(1));
 				
 				listAllLanguages.add(userInDatabase);
 			}
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            closeStm(conn, stmt);
-            closeRs(resultSet);
-            closeCon(conn);
-        } 
-        return listAllLanguages;
-	}
-
-	private void closeRs(ResultSet resultSet) {
-		if(
-			resultSet != null){
-			try {
-				resultSet.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(resultSet);
+			close(preparedStatement);
 		}
+	    manager.close(conn);
+        return listAllLanguages;
 	}
     
 	public void insertNewCountry(String country, String language){
-	    	Connection conn = null;
-	        Statement stmt = null;
-	
-	        try {
-	            Class.forName("org.h2.Driver");
-	
-			    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			  
-			    stmt = conn.createStatement();
-			
-			    String sql = "REPLACE INTO Countries (country,language) VALUES ('" + country + "', '" + language + "')";
-	               
-	        stmt.executeUpdate(sql);
-	    } catch (SQLException se) {            
-	        se.printStackTrace();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        closeStm(conn, stmt);
-	        closeCon(conn);
-	    } 
+		PreparedStatement preparedStatement = null;
+		Connection conn = manager.open(jdbcUrl);
+
+        try {
+        	preparedStatement = conn.prepareStatement("REPLACE INTO Countries (country,language) VALUES (?,?)");
+			preparedStatement.setString(1, country);
+			preparedStatement.setString(2, language);
+			preparedStatement.execute();
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		manager.close(conn);
 	}
    
 	public  void insertNewLanguage(String language){
-	   Connection conn = null;
-	   Statement stmt = null;
-	
-	   try {
-	       Class.forName("org.h2.Driver");
-	
-		   conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		 
-		   stmt = conn.createStatement();
-		
-		   String sql = "REPLACE INTO Languages (language) VALUES ('" + language + "')";
-	                  
-	           stmt.executeUpdate(sql);
-       } catch (SQLException se) {            
-           se.printStackTrace();
-       } catch (Exception e) {
-           e.printStackTrace();
-       } finally {
-           closeStm(conn, stmt);
-           closeCon(conn);
-       } 
+		PreparedStatement preparedStatement = null;
+		Connection conn = manager.open(jdbcUrl);
+
+        try {
+        	preparedStatement = conn.prepareStatement("REPLACE INTO Languages (language) VALUES (?)");
+			preparedStatement.setString(1, language);
+			preparedStatement.execute();
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		manager.close(conn);
 	}
-   
-	public void createLanguagesTable(){
-	   Connection conn = null;
-       Statement stmt = null;
-
-       try {
-           Class.forName("org.h2.Driver");
-
-		   conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		  
-		   stmt = conn.createStatement();
-		
-		   String sql = "CREATE TABLE IF NOT EXISTS Languages (language VARCHAR(255), PRIMARY KEY (language))";
-
-           stmt.executeUpdate(sql);
-       } catch (SQLException se) {
-           se.printStackTrace();
-       } catch (Exception e) {
-           e.printStackTrace();
-       } finally {
-    	   closeStm(conn, stmt);
-           closeCon(conn);
-       } 
+	
+	private static void close(PreparedStatement preparedStatement) {
+		try {
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
-
-   
-	public void createCountriesTable(){
-	   Connection conn = null;
-	   Statement stmt = null;
 	
-	   try {
-	       Class.forName("org.h2.Driver");
-
-		   conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		  
-		   stmt = conn.createStatement();
-		
-		   String sql = "CREATE TABLE IF NOT EXISTS Countries(country VARCHAR(255), language VARCHAR(255), PRIMARY KEY (country))";
-	
-	       stmt.executeUpdate(sql);
-	   } catch (SQLException se) {
-	       se.printStackTrace();
-	   } catch (Exception e) {
-	       e.printStackTrace();
-	   } finally {
-		   closeStm(conn, stmt);
-	       closeCon(conn);
-	   } 
-	}  
+	private static void close(ResultSet resultSet) {
+		try {
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 }

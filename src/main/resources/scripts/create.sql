@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Languages (
+	language VARCHAR(255) PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS Countries(
+	country VARCHAR(255) PRIMARY KEY, 
+	language VARCHAR(255)
+);
+	
