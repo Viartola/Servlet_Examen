@@ -34,7 +34,7 @@ public class Repository {
 	} 
 	
 	public void deleteLannguage(String language){
-	    PreparedStatement preparedStatement = null;
+		PreparedStatement preparedStatement = null;
 		Connection conn = manager.open(jdbcUrl);
 	
 		try {
@@ -83,8 +83,8 @@ public class Repository {
     	Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement preparedStatement = null;
-
-        try {
+		
+		try {
 			preparedStatement = conn.prepareStatement("SELECT * FROM Languages");
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
@@ -113,7 +113,7 @@ public class Repository {
 			preparedStatement.setString(1, country);
 			preparedStatement.setString(2, language);
 			preparedStatement.execute();
-        } catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {
@@ -127,10 +127,10 @@ public class Repository {
 		Connection conn = manager.open(jdbcUrl);
 
         try {
-        	preparedStatement = conn.prepareStatement("REPLACE INTO Languages (language) VALUES (?)");
+			preparedStatement = conn.prepareStatement("REPLACE INTO Languages (language) VALUES (?)");
 			preparedStatement.setString(1, language);
 			preparedStatement.execute();
-        } catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {

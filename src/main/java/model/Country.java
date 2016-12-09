@@ -15,5 +15,4 @@ public class Country {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	
 }
