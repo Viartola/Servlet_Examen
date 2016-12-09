@@ -42,7 +42,7 @@
 						<td><c:out value="${country.language}"/> </td>
 						<td></td>
 						<td><a name="user" href="Confirmation?language=${country.language}">Borrar Idioma</a></td>
-		    		</tr>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
