@@ -7,13 +7,14 @@
 		<title>Borrar Idioma</title>
 	</head>
 	<body>
-		<center><h1>AL BORRAR UN IDIOMA SERAN ELIMINADOS TODOS LOS PAISES QUE TENGAN EL MISMO IDIOMA</h1>
-		<form method="post" action="Delete">
-			<input type="hidden" value="${language}" name="language">
-			<br>
-			<input type="submit"  value="SI, estoy seguro">
-			<input type="button" onclick="window.location.href='index.jsp'"  value="NO, quiero eliminarlo">
-		</form>	
-	</center>
+		<center>
+			<h1>AL BORRAR UN IDIOMA SERAN ELIMINADOS TODOS LOS PAISES QUE TENGAN EL MISMO IDIOMA</h1>
+			<form method="post" action="Delete">
+				<input type="hidden" value="${language}" name="language">
+				<br>
+				<input type="submit"  value="SI, estoy seguro">
+				<input type="button" onclick="window.location.href='index.jsp'"  value="NO, quiero eliminarlo">
+			</form>	
+		</center>
 	</body>
 </html>
