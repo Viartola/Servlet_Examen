@@ -69,10 +69,10 @@ public class Repository {
 	    } catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}finally {
+	    }finally {
 			close(resultSet);
 			close(preparedStatement);
-		}
+	    }
 	    manager.close(conn);
 	    return listAllCountries;
 	}
@@ -100,7 +100,7 @@ public class Repository {
 			close(preparedStatement);
 		}
 	    manager.close(conn);
-        return listAllLanguages;
+	    return listAllLanguages;
 	}
     
 	public void insertNewCountry(String country, String language){
