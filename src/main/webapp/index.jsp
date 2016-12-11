@@ -40,7 +40,7 @@
 					<td><input type="text" id="newLanguage" name="newLanguage" size="30"></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><h3 style = "color:red">${fail}</h3></td>
+					<td colspan="2" align="center">${fail}</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right"><input type="submit" value="Enviar"></td>

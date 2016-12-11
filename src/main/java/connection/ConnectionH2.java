@@ -25,7 +25,6 @@ public class ConnectionH2 implements ConnectionManager {
 			prepareStatement = conn.prepareStatement(sql);
 		prepareStatement.execute(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;

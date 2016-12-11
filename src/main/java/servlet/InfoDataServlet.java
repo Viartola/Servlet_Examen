@@ -28,14 +28,14 @@ public class InfoDataServlet extends HttpServlet {
 		String fail = "";
 		
 		if (country == ""){
-			fail = "Error inserte un pais";
+			fail = "<h3 style = 'color:red'>Error inserte un pais</h3>";
 			req.setAttribute("fail",fail);
 		}else if(nLanguage == ""){
-			fail = "Se inserto con exito el nuevo pais";
+			fail = "<h3 style = 'color:green'>Se inserto con exito el nuevo pais</h3>";
 			req.setAttribute("fail",fail);
 			service.insertNewCountry(language, country);
 		}else{
-			fail = "Se inserto con exito el nuevo pais";
+			fail = "<h3 style = 'color:green'>Se inserto con exito el nuevo pais</h3>";
 			req.setAttribute("fail",fail);
 			service.insertNewLanguage(nLanguage, country);
 		}
